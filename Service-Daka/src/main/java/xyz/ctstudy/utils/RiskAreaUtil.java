@@ -31,7 +31,7 @@ public class RiskAreaUtil {
     //中高风险地区信息的url
     private static final String riskURL = "https://m.sm.cn/api/rest?format=json&method=Huoshenshan.riskArea&_=1628665447912";
     //百度地图的ak
-    private static final String ak = "thCuhGo0p72ktzHtrRc26ulA1yqTx0kk";
+    private static final String ak = "thCuhGo0p72ktzHtrRc26ulA1yqTx0kk";  //使用你自己的ak放在这里
 
     /**
      * 获取中高风险地区，通过百度地图api逆向解析成经纬度，然后将数据放入redis中
