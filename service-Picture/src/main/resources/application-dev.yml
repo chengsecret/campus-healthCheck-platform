@@ -6,7 +6,7 @@ spring:
     name: ServiceOfPicture  #微服务名称，对外暴漏的微服务名称
   datasource:
     username: root
-    password: 1234567
+    password: xxx
     url: jdbc:mysql://localhost:3306/graduate_picture_server?useSSL=true&useUnicode=true&characterEncoding=utf-8
     driver-class-name: org.gjt.mm.mysql.Driver
     type: com.alibaba.druid.pool.DruidDataSource
@@ -26,10 +26,10 @@ spring:
     filters: stat,wall,log4j
 
   redis:
-    host: 124.222.212.138
+    host: 127.0.0.1
     port: 6379
-    database: 1
-    password: 6652hhhh
+    database: 0
+    password: xxxx
 
 
 mybatis:
@@ -41,14 +41,12 @@ mybatis:
 eureka:
   client: #将客户端注册到 eureka 服务列表内
     service-url:
-      defaultZone: http://121.4.135.157:7001/eureka
+      defaultZone: http://127.0.0.1:7001/eureka
     fetch-registry: true  #图片服务会调用打卡服务，可以理解为服务消费者，需要去检索服务
     register-with-eureka: true #图片服务又是服务提供者，需要在服务注册中心注册服务
   instance:
     instance-id: service-picture #自定义服务名称信息
     prefer-ip-address: true  #显示访问路径的 ip 地址
-#    ip-address: 121.4.135.157
-#    non-secure-port: 8002
 
 # 信息配置
 info:
@@ -56,10 +54,10 @@ info:
   company.name: wxdaka.ctstudy.xyz
 
 qiniu:
-  accessKey: s59XECBXBEgWyrkHLxzjgRRIgC951MJLA60um2Db
-  secretKey: jgKSK8nmYJHbcHm-sUWwXRW3pOTJ0LJJxGzlZvYK
-  bucket: ctstudy   #存储空间名称
-  prefix: wx.ctstudy.xyz #访问域名
+  accessKey: xxxxxxx # 配置七牛云的accessKey
+  secretKey: xxxxxxx # 配置七牛云的secretKey
+  bucket: ctstudy   #存储空间名称（配置你自己的
+  prefix: wx.ctstudy.xyz #访问域名 （配置你自己的
 
 
 logging:
