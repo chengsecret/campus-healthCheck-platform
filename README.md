@@ -12,7 +12,7 @@
 ## 运行
 执行顺序：eureka-->打卡服务-->图片服务-->网关。顺序不能错
 
-此外:
+需要:
 - 修改打卡服务与图片服务的application-dev.yml文件中的数据库与redis配置
 - 前端是微信小程序,需要去微信小程序官网获取appid与appSecret,配置到打卡服务中的application-dev.yml文件中（用于登录 wx.login ）
 - 图片服务采用了七牛云对象存储,需要去七牛云官网开辟存储空间,将accessKey等信息配置到图片服务的application-dev.yml文件中
