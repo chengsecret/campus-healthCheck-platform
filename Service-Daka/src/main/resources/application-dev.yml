@@ -6,7 +6,7 @@ spring:
     name: ServiceOfDaka  #微服务名称，对外暴漏的微服务名称
   datasource:
     username: root
-    password: 1234567
+    password: xxxxxxx
     url: jdbc:mysql://localhost:3306/graduate_daka_server?useSSL=true&useUnicode=true&characterEncoding=utf-8
     driver-class-name: org.gjt.mm.mysql.Driver
     type: com.alibaba.druid.pool.DruidDataSource
@@ -26,10 +26,10 @@ spring:
     filters: stat,wall,log4j
 
   redis:
-    host: 124.222.212.138
+    host: 11111111 # 配置redis所在的ip地址
     port: 6379
-    database: 1
-    password: 6652hhhh
+    database: 0
+    password: xxxxxxx
     jedis:
       pool:
         max-active: 1000
@@ -46,7 +46,7 @@ mybatis:
 eureka:
   client: #将客户端注册到 eureka 服务列表内
     service-url:
-      defaultZone: http://121.4.135.157:7001/eureka
+      defaultZone: http://127.0.0.1:7001/eureka
   instance:
     instance-id: service-daka #自定义服务名称信息
 #    prefer-ip-address: true  #显示访问路径的 ip 地址
@@ -65,6 +65,6 @@ logging:
 
 wx:
   applet:
-    appId: wx02bcd674213f29e0
-    appSecret: cac228b452e1eeb58cc5a26e901d7578
+    appId: xxx  #前端为微信小程序，请配置自己的appid
+    appSecret: xxx #前端为微信小程序，请配置自己的appSecret
 
