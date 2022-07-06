@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xyz.ctstudy.dao.RecordDakaMapper">
+    <insert id="addRecordDaka" parameterType="RecordDaka">
+        insert into graduate_daka_server.record_daka
+            (openid, state, zjpicture, time, longitude, latitude, isrisk)
+        values(#{openid},#{state},#{zjpicture},#{time},#{longitude},#{latitude},#{isrisk})
+    </insert>
+
+    <select id="getRecords" resultType="String">
+        select time from graduate_daka_server.record_daka
+        where openid = #{openid}
+    </select>
+
+</mapper>

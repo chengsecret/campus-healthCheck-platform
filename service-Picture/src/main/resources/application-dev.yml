@@ -1,0 +1,69 @@
+server:
+  port: 8002
+
+spring:
+  application:
+    name: ServiceOfPicture  #微服务名称，对外暴漏的微服务名称
+  datasource:
+    username: root
+    password: 1234567
+    url: jdbc:mysql://localhost:3306/graduate_picture_server?useSSL=true&useUnicode=true&characterEncoding=utf-8
+    driver-class-name: org.gjt.mm.mysql.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    #druid配置
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    filters: stat,wall,log4j
+
+  redis:
+    host: 124.222.212.138
+    port: 6379
+    database: 1
+    password: 6652hhhh
+
+
+mybatis:
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  type-aliases-package: xyz.ctstudy.entity
+  configuration:   # 驼峰命名法的自动映射
+    map-underscore-to-camel-case: true
+
+eureka:
+  client: #将客户端注册到 eureka 服务列表内
+    service-url:
+      defaultZone: http://121.4.135.157:7001/eureka
+    fetch-registry: true  #图片服务会调用打卡服务，可以理解为服务消费者，需要去检索服务
+    register-with-eureka: true #图片服务又是服务提供者，需要在服务注册中心注册服务
+  instance:
+    instance-id: service-picture #自定义服务名称信息
+    prefer-ip-address: true  #显示访问路径的 ip 地址
+#    ip-address: 121.4.135.157
+#    non-secure-port: 8002
+
+# 信息配置
+info:
+  app.name: wx-healthCheck-picture
+  company.name: wxdaka.ctstudy.xyz
+
+qiniu:
+  accessKey: s59XECBXBEgWyrkHLxzjgRRIgC951MJLA60um2Db
+  secretKey: jgKSK8nmYJHbcHm-sUWwXRW3pOTJ0LJJxGzlZvYK
+  bucket: ctstudy   #存储空间名称
+  prefix: wx.ctstudy.xyz #访问域名
+
+
+logging:
+  level:
+    xyz:
+      ctstudy:
+        dao: debug

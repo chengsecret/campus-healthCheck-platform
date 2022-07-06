@@ -1,0 +1,70 @@
+server:
+  port: 8001
+
+spring:
+  application:
+    name: ServiceOfDaka  #微服务名称，对外暴漏的微服务名称
+  datasource:
+    username: root
+    password: 1234567
+    url: jdbc:mysql://localhost:3306/graduate_daka_server?useSSL=true&useUnicode=true&characterEncoding=utf-8
+    driver-class-name: org.gjt.mm.mysql.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    #druid配置
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    filters: stat,wall,log4j
+
+  redis:
+    host: 124.222.212.138
+    port: 6379
+    database: 1
+    password: 6652hhhh
+    jedis:
+      pool:
+        max-active: 1000
+        max-idle: 10
+        min-idle: 5
+        max-wait: -1
+
+mybatis:
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  type-aliases-package: xyz.ctstudy.entity
+  configuration:   # 驼峰命名法的自动映射
+    map-underscore-to-camel-case: true
+
+eureka:
+  client: #将客户端注册到 eureka 服务列表内
+    service-url:
+      defaultZone: http://121.4.135.157:7001/eureka
+  instance:
+    instance-id: service-daka #自定义服务名称信息
+#    prefer-ip-address: true  #显示访问路径的 ip 地址
+
+# 信息配置
+info:
+  app.name: wx-healthCheck-daka
+  company.name: wxdaka.ctstudy.xyz
+
+
+logging:
+  level:
+    xyz:
+      ctstudy:
+        dao: debug
+
+wx:
+  applet:
+    appId: wx02bcd674213f29e0
+    appSecret: cac228b452e1eeb58cc5a26e901d7578
+

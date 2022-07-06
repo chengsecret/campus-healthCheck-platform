@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xyz.ctstudy.dao.UserMapper">
+    <insert id="addUser" parameterType="User">
+        insert into graduate_daka_server.user (openid, name, num, classnum, mid)
+        values(#{openid}, #{name}, #{num}, #{classnum}, #{mid} )
+    </insert>
+
+    <update id="updateUser" parameterType="User">
+        update graduate_daka_server.user
+        set name=#{name},num=#{num},classnum=#{classnum},mid=#{mid}
+        where openid = #{openid}
+    </update>
+
+    <update id="updateHealthInfo" parameterType="HealthInfo">
+        update graduate_daka_server.healthinfo
+        set color=#{color},reason=#{reason},updatetime=#{updatetime},continuousnum=#{continuousnum}
+        where openid = #{openid}
+    </update>
+
+    <update id="updateHealthInfoColorAndReason">
+        update graduate_daka_server.healthinfo
+        set color=#{newColor}, reason=#{reason}
+        where color=#{color} and updatetime=#{updatetime}
+    </update>
+
+    <insert id="addHealthInfo" parameterType="HealthInfo">
+        insert into graduate_daka_server.healthinfo (openid, color, reason, updatetime, continuousnum)
+        VALUES (#{openid},#{color},#{reason},#{updatetime},#{continuousnum})
+    </insert>
+
+    <select id="findUser" resultType="User">
+        select id, openid, name, num, classnum, mid from graduate_daka_server.user where openid = #{openid}
+    </select>
+
+    <select id="findUserByNum" resultType="User">
+        select id, openid, name, num, classnum, mid from graduate_daka_server.user where num = #{num}
+    </select>
+
+    <select id="findHealthInfo" resultType="HealthInfo">
+        select id, openid, color, reason, updatetime, continuousnum from graduate_daka_server.healthinfo where openid = #{openid}
+    </select>
+
+    <select id="getClassnums" resultType="String">
+        select num from graduate_daka_server.classroom
+    </select>
+
+    <select id="getMid" resultType="int">
+        select mid from graduate_daka_server.classroom where num = #{num}
+    </select>
+
+    <select id="getHealthInfo" resultType="String">
+        select openid from graduate_daka_server.healthinfo
+        where color=#{color} and updatetime=#{updatetime}
+    </select>
+
+</mapper>

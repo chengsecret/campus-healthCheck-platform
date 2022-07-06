@@ -1,0 +1,54 @@
+#本地
+server:
+  port: 9999
+
+spring:
+  application:
+    name: healthCheck-zuul
+#    name: healthCheck-zuul-server
+
+eureka:   #相当于是个服务提供者，注册进eureka
+  client:
+    service-url:
+      defaultZone: http://121.4.135.157:7001/eureka
+#      defaultZone: http://124.222.212.138:7001/eureka
+  instance:
+    instance-id: zuul-healthCheck  #修改eureka上的默认描述信息
+    prefer-ip-address: true  # 显示IP
+#    ip-address: 124.222.212.138
+#    non-secure-port: 9999
+
+info:
+  company.name: ctstudy.xyz
+
+zuul:
+  routes:
+    daka:
+      serviceId: ServiceOfDaka
+      path: /wx/daka/**
+    picture:
+      serviceId: ServiceOfPicture
+      path: /wx/picture/**
+    host:
+      connect-timeout-millis: 80000
+      socket-timeout-millis: 80000
+
+ribbon:
+  ReadTimeout: 7000
+  SocketTimeout: 7000
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 16000
+
+
+common:
+  login:
+    url: /wx/daka/user/login #登录请求地址,可设置多个,使用逗号分隔开
+exclude:
+  auth:
+    url: /wx/daka/user/login #不需要授权验证的请求地址,可设置多个,使用逗号分隔开,会跳过AuthFilter授权验证
