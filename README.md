@@ -1,9 +1,9 @@
 # 健康打卡系统后端
-前端项目地址：[健康打卡系统前端](https://github.com/chengsecret/campus-healthCheck-platform)
+前端项目地址：[健康打卡系统前端](https://github.com/chengsecret/health-check)
 ## 技术栈
 系统以Springcloud为开发框架，redis作缓存处理，MySQL持久化数据，JWT进行权限认证，Zxing生成二维码，七牛云对象存储保存图片。
 ## 项目说明
-系统采用前后端分离的设计架构，前端采用微信小程序，后端基于Java框架开发，前端见：[健康打卡系统前端](https://github.com/chengsecret/campus-healthCheck-platform)。实现了健康打卡、查看打卡记录、生成校园通行码、提交恢复绿码申请等功能。
+系统采用前后端分离的设计架构，前端采用微信小程序，后端基于Java框架开发，前端见：[健康打卡系统前端](https://github.com/chengsecret/health-check)。实现了健康打卡、查看打卡记录、生成校园通行码、提交恢复绿码申请等功能。
 ## 微服务架构
 采用SpringCloud微服务架构，将系统分成了四个部分：注册中心、打卡服务、图片服务、网关。
 - eureka服务端：提供服务注册
